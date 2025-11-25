@@ -9,3 +9,21 @@ const rates: ExchangeRates = {
   JPY: 148.5,
   RUB: 108.7,
 }
+
+function convert(
+  amount: number,
+  from: string,
+  to: string,
+  rates: ExchangeRates
+): number | null {
+  const fromRate = rates[from.toUpperCase()]
+  const toRate = rates[to.toUpperCase()]
+
+  if (!fromRate || !toRate) {
+    alert('Wrong currency')
+    return null
+  }
+
+  const usdAmount = amount / fromRate
+  return usdAmount * toRate
+}
