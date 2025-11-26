@@ -34,3 +34,22 @@ function convert(
   const usdAmount = amount / fromRate
   return usdAmount * toRate
 }
+
+btn.addEventListener('click', () => {
+  const amount = parseFloat(amountInput.value)
+  if (isNaN(amount)) {
+    resultPar.textContent = 'Please enter the correct amount!'
+    return
+  }
+
+  const from = fromInput.value
+  const to = toInput.value
+
+  const result = convert(amount, from, to, rates)
+
+  if (result !== null) {
+    resultPar.textContent = `${amount} ${from.toUpperCase()} = ${result.toFixed(
+      2
+    )} ${to.toUpperCase()}`
+  }
+})
