@@ -1,3 +1,10 @@
+// DOM Elements
+const amountInput = document.getElementById('amount') as HTMLInputElement
+const fromInput = document.getElementById('from') as HTMLInputElement
+const toInput = document.getElementById('to') as HTMLInputElement
+const resultPar = document.getElementById('result') as HTMLParagraphElement
+const btn = document.getElementById('convertBtn') as HTMLButtonElement
+
 interface ExchangeRates {
   [key: string]: number
 }
