@@ -1,7 +1,7 @@
 // DOM Elements
 const amountInput = document.getElementById('amount') as HTMLInputElement
-const fromInput = document.getElementById('from') as HTMLInputElement
-const toInput = document.getElementById('to') as HTMLInputElement
+const fromSelect = document.getElementById('from') as HTMLSelectElement
+const toSelect = document.getElementById('to') as HTMLSelectElement
 const resultPar = document.getElementById('result') as HTMLParagraphElement
 const btn = document.getElementById('convertBtn') as HTMLButtonElement
 
@@ -42,8 +42,8 @@ btn.addEventListener('click', () => {
     return
   }
 
-  const from = fromInput.value
-  const to = toInput.value
+  const from = fromSelect.value
+  const to = toSelect.value
 
   const result = convert(amount, from, to, rates)
 
