@@ -17,7 +17,7 @@ interface ExchangeAPIResponse {
 }
 
 async function fetchRates(base: string = 'USD'): Promise<ExchangeRates> {
-  const url = `https://api.frankfurter.app/latest?from=${base}`
+  const url = `https://api.exchangerate-api.com/v4/latest/${base}`
 
   const response = await fetch(url)
   const data: ExchangeAPIResponse = await response.json()
