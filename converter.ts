@@ -9,13 +9,39 @@ interface ExchangeRates {
   [key: string]: number
 }
 
-const rates: ExchangeRates = {
-  USD: 1,
-  EUR: 0.93,
-  GBP: 0.81,
-  JPY: 148.5,
-  RUB: 108.7,
+interface ExchangeAPIResponse {
+  base: string
+  rates: {
+    [key: string]: number
+  }
 }
+
+async function fetchRates(base: string = 'USD'): Promise<ExchangeRates> {
+  const url = `https://api.frankfurter.app/latest?from=${base}`
+
+  const response = await fetch(url)
+  const data: ExchangeAPIResponse = await response.json()
+
+  return data.rates
+}
+
+// const rates: ExchangeRates = {
+//   USD: 1,
+//   EUR: 0.93,
+//   GBP: 0.81,
+//   JPY: 148.5,
+//   RUB: 108.7,
+// }
+
+let rates: ExchangeRates = {}
+
+async function init() {
+  rates = await fetchRates()
+  console.log('Rates updated:', rates)
+  btn.disabled = false
+}
+
+init()
 
 function convert(
   amount: number,
@@ -48,8 +74,6 @@ btn.addEventListener('click', () => {
   const result = convert(amount, from, to, rates)
 
   if (result !== null) {
-    resultPar.textContent = `${amount} ${from.toUpperCase()} = ${result.toFixed(
-      2
-    )} ${to.toUpperCase()}`
+    resultPar.textContent = `${amount} ${from} = ${result.toFixed(2)} ${to}`
   }
 })
