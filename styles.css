@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #1b2229;
+  color: #f5c448;
+}
+
+.container {
+  margin-left: 20px;
+}
+
+select,
+button {
+  cursor: pointer;
+}
+
+input,
+select,
+button {
+  padding: 5px;
+}

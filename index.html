@@ -3,19 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Currency Converter</title>
   </head>
   <body>
-    <h1>Currency Converter</h1>
-    <input id="amount" type="number" placeholder="Amount" />
-    <label for="from">From</label>
-    <select id="from"></select>
+    <div class="container">
+      <h1>Currency Converter</h1>
+      <input id="amount" type="number" placeholder="Amount" />
+      <label for="from">From</label>
+      <select id="from"></select>
 
-    <label for="to">To</label>
-    <select id="to"></select>
-    <button id="convertBtn" disabled>Convert</button>
+      <label for="to">To</label>
+      <select id="to"></select>
+      <button id="convertBtn" disabled>Convert</button>
 
-    <p id="result"></p>
+      <p id="result"></p>
+    </div>
 
     <script type="module" src="./dist/converter.js"></script>
   </body>
