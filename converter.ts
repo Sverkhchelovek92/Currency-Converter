@@ -25,23 +25,37 @@ async function fetchRates(base: string = 'USD'): Promise<ExchangeRates> {
   return data.rates
 }
 
-// const rates: ExchangeRates = {
-//   USD: 1,
-//   EUR: 0.93,
-//   GBP: 0.81,
-//   JPY: 148.5,
-//   RUB: 108.7,
-// }
-
 let rates: ExchangeRates = {}
 
 async function init() {
   rates = await fetchRates()
   console.log('Rates updated:', rates)
+
+  fillCurrencySelects(rates)
+
   btn.disabled = false
 }
 
 init()
+
+function fillCurrencySelects(rates: ExchangeRates) {
+  const currencies = Object.keys(rates).sort()
+
+  currencies.forEach((cur) => {
+    const optionFrom = document.createElement('option')
+
+    optionFrom.value = cur
+    optionFrom.textContent = cur
+
+    const optionTo = optionFrom.cloneNode(true) as HTMLOptionElement
+
+    fromSelect.appendChild(optionFrom)
+    toSelect.appendChild(optionTo)
+  })
+
+  fromSelect.value = 'USD'
+  toSelect.value = 'EUR'
+}
 
 function convert(
   amount: number,
